@@ -8,6 +8,10 @@ const allButtonsElm = document.querySelectorAll(".btn");
 let strToDisplay = "";
 const displayElm = document.querySelector(".display");
 
+
+const operators = ["+", "-", "/", "*", "%"];
+
+
  const buttonAction = (value) => {
     console.log(value); 
 
@@ -20,13 +24,32 @@ const displayElm = document.querySelector(".display");
 
 
     if(value === "C"){
-       strToDisplay = strToDisplay.slice(0,-1);
+        strToDisplay = strToDisplay.slice(0,-1);
        return display(strToDisplay);
     }
 
     if(value === "=") {
+        // get the last character
+         const lastChar = strToDisplay[strToDisplay.length - 1]; 
+         //check if it is one of the opreators 
+         if(operators.includes(lastChar)){
+             strToDisplay = strToDisplay.slice(0,-1);
+        }
+       
         return displayTotal();
     }
+
+    // show only last clicked operator. 
+    if (operators.includes(value)){
+        //get the last character 
+        const lastChar =  strToDisplay[strToDisplay.length - 1];
+
+        if (operators.includes(lastChar)){
+            strToDisplay = strToDisplay.slice(0,-1);
+        }
+    }
+
+
 
 
     strToDisplay += value;
@@ -54,6 +77,6 @@ allButtonsElm.forEach(
     const displayTotal  = () => {
          const total =  eval(strToDisplay);
 
-         strToDisplay = total.toSring();
+         strToDisplay = total.toString();
          display(strToDisplay);
     };
