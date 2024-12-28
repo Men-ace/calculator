@@ -16,6 +16,18 @@ const displayElm = document.querySelector(".display");
         strToDisplay = "";
         return display(strToDisplay);
     }
+     
+
+
+    if(value === "C"){
+       strToDisplay = strToDisplay.slice(0,-1);
+       return display(strToDisplay);
+    }
+
+    if(value === "=") {
+        return displayTotal();
+    }
+
 
     strToDisplay += value;
 
@@ -35,4 +47,13 @@ allButtonsElm.forEach(
     //update clicked value button value to display area 
     const display =  (str) => {
         displayElm.innerText = str ||  "0.0" ;
+    };
+
+
+    // calculate total 
+    const displayTotal  = () => {
+         const total =  eval(strToDisplay);
+
+         strToDisplay = total.toSring();
+         display(strToDisplay);
     };
