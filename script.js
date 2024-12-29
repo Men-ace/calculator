@@ -13,9 +13,12 @@ const operators = ["+", "-", "/", "*", "%"];
 
 let  lastOperator = "";
 
- const buttonAction = (value) => {
-    console.log(value); 
+//load the audio 
+const audio = new Audio("./assests/error.mp3");
 
+ const buttonAction = (value) => {
+    
+    displayElm.classList.remove("prank"); 
 
     if(value === "AC"){
         strToDisplay = "";
@@ -102,7 +105,10 @@ allButtonsElm.forEach(
 
         const extraValue = randomValue();
 
-
+        if (extraValue){
+            displayElm.classList.add("prank"); 
+            audio.play();
+        }
          const total =  eval(strToDisplay) + extraValue ;
 
          strToDisplay = total.toString();
@@ -112,6 +118,6 @@ allButtonsElm.forEach(
 
     const randomValue = () => {
         const num = Math.round(Math.random() * 10);
-        return num < 9? num : 0;
+        return num < 6? num : 0;
      };
     

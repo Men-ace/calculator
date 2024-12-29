@@ -164,4 +164,23 @@ body{
     grid-area: equal;
   }
 
-  
+  .prank{
+    background: red;
+    color: white;
+    animation: shake 0.5s;
+  }
+
+  @keyframes shake  {
+    0%{
+      transform: translate(10px);
+    }
+    50%{
+      transform: translate(-10px);
+    }
+    80%{
+      transform: translate(10px);
+    }
+    100%{
+      transform: translate(-10px);
+    }
+  }
