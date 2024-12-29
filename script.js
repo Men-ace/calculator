@@ -32,7 +32,7 @@ const audio = new Audio("./assests/error.mp3");
        return display(strToDisplay);
     }
 
-    if(value === "=") {
+    if(value === "="  || value === "Enter") {
 
         lastOperator = "";
         // get the last character
@@ -127,3 +127,15 @@ allButtonsElm.forEach(
         return num < 6? num : 0;
      };
     
+
+
+     //binding keyboard with the browser app
+     document.addEventListener("keypress",  (e) => {
+        console.log(e); 
+       const value = e.key;
+        if (e.code.includes("Key")){
+            return;
+        }
+
+       buttonAction(value);
+     });
