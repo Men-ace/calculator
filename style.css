@@ -52,7 +52,7 @@ body{
 
     border-radius: 5px;
     transform: perspective(70rem) rotateX(30deg);
-  
+    animation: moving 2.5s;
   }
 
 
@@ -182,5 +182,16 @@ body{
     }
     100%{
       transform: translate(-10px);
+    }
+  }
+
+
+  @keyframes moving  {
+    0%{
+      transform: perspective(10rem) rotateX(30deg); ;
+    }
+
+   100%{
+      transform: perspective(70rem) rotateX(30deg); ;
     }
   }
